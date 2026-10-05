@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Training Kit</title>
+</head>
+
+<body>
+
+    <h1>Industrial Training Kit</h1>
+    <h2>Backend API - Project 2</h2>
+
+    <button onclick="getProjects()">Get Projects</button>
+
+    <h3>Add New Project</h3>
+
+    <form id="projectForm">
+
+        <input type="text" id="name" placeholder="Project Name">
+        <br><br>
+
+        <input type="text" id="description" placeholder="Description">
+        <br><br>
+
+        <input type="text" id="technology" placeholder="Technology">
+        <br><br>
+
+        <button type="submit">Add Project</button>
+
+    </form>
+
+    <h3>Response</h3>
+
+    <pre id="result"></pre>
+
+    <script>
+
+        async function getProjects() {
+
+            const response = await fetch("/api/projects");
+
+            const data = await response.json();
+
+            document.getElementById("result").textContent =
+                JSON.stringify(data, null, 4);
+        }
+
+        document
+            .getElementById("projectForm")
+            .addEventListener("submit", async function(event) {
+
+                event.preventDefault();
+
+                const project = {
+
+                    name: document.getElementById("name").value,
+
+                    description:
+                        document.getElementById("description").value,
+
+                    technology:
+                        document.getElementById("technology").value
+                };
+
+                const response = await fetch(
+                    "/api/projects",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify(project)
+                    }
+                );
+
+                const data = await response.json();
+
+                document.getElementById("result").textContent =
+                    JSON.stringify(data, null, 4);
+
+            });
+
+    </script>
+
+</body>
+</html>

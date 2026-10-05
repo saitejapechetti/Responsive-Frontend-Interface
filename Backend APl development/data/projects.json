@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Industrial Training Kit",
+        "description": "Responsive frontend interface for industrial training resources.",
+        "technology": "HTML, CSS, JavaScript"
+    },
+    {
+        "id": 2,
+        "name": "House Price Prediction",
+        "description": "Machine learning project for predicting house prices.",
+        "technology": "Python, Machine Learning"
+    }
+]
