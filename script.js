@@ -30,3 +30,19 @@ function registerUser(event) {
     );
 
 }
+
+const API_URL = "https://backend-api-development-d0yy.onrender.com";
+
+async function getProjects() {
+    try {
+        const response = await fetch(`${API_URL}/api/projects`);
+
+        const data = await response.json();
+
+        console.log("Projects from backend:", data);
+
+        return data;
+    } catch (error) {
+        console.error("Backend connection error:", error);
+    }
+}
